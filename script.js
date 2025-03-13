@@ -1,45 +1,40 @@
-document
-  .getElementById("sold-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    let drugName = document.getElementById("sold-drug").value;
-    let quantitySold = parseInt(document.getElementById("sold-quantity").value);
-    updateStock(drugName, -quantitySold);
-  });
+// Function to Search Drugs by Name or Price
+function searchDrugs() {
+    let input = document.getElementById("searchBar").value.toLowerCase();
+    let table = document.getElementById("drugTable");
+    let rows = table.getElementsByTagName("tr");
 
-document
-  .getElementById("restock-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    let drugName = document.getElementById("restock-drug").value;
-    let quantityRestocked = parseInt(
-      document.getElementById("restock-quantity").value
-    );
-    updateStock(drugName, quantityRestocked);
-  });
+    for (let i = 1; i < rows.length; i++) {
+        let cells = rows[i].getElementsByTagName("td");
+        let drugName = cells[0].textContent.toLowerCase();
+        let price = cells[1].textContent.toLowerCase();
 
-function updateStock(drugName, quantityChange) {
-  let rows = document.querySelectorAll("#drug-list tr");
-  let found = false;
-
-  rows.forEach((row) => {
-    let name = row.cells[0].textContent;
-    let stockCell = row.cells[3];
-
-    if (name.toLowerCase() === drugName.toLowerCase()) {
-      let newStock = parseInt(stockCell.textContent) + quantityChange;
-      stockCell.textContent = newStock;
-      found = true;
-
-      if (newStock <= 5) {
-        document.getElementById(
-          "low-stock-msg"
-        ).textContent = `⚠️ ${drugName} is running out of stock!`;
-      }
+        if (drugName.includes(input) || price.includes(input)) {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }
     }
-  });
-
-  if (!found) {
-    alert("Drug not found in inventory.");
-  }
 }
+
+// Function to Check Low Stock and Alert User
+function checkLowStock() {
+    let table = document.getElementById("drugTable");
+    let rows = table.getElementsByTagName("tr");
+    let lowStockList = document.getElementById("lowStockAlerts");
+    lowStockList.innerHTML = ""; // Clear previous alerts
+
+    for (let i = 1; i < rows.length; i++) {
+        let cells = rows[i].getElementsByTagName("td");
+        let stockLevel = parseInt(cells[2].textContent);
+
+        if (stockLevel < 10) { // Low stock threshold
+            let drugName = cells[0].textContent;
+            let alertMessage = `<p class="low-stock">${drugName} - ${stockLevel} left</p>`;
+            lowStockList.innerHTML += alertMessage;
+        }
+    }
+}
+
+// Run low stock check on page load
+window.onload = checkLowStock;
