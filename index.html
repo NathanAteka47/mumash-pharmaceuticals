@@ -1,88 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mumash Pharmaceuticals</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Navigation Bar -->
-    <header>
-      <h1>Mumash Pharmaceuticals</h1>
-      <nav>
-        <ul>
-          <li><a href="#inventory">Inventory</a></li>
-          <li><a href="#sold">Sold Drugs</a></li>
-          <li><a href="#restock">Restock</a></li>
-          <li><a href="#low-stock">Low Stock Alerts</a></li>
-        </ul>
-      </nav>
-    </header>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        header {
+            background-color: #008080;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px gray;
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #008080;
+            color: white;
+        }
+        .low-stock {
+            color: red;
+            font-weight: bold;
+        }
+        .sold, .restocked, .alerts, .contacts {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffebcc;
+            border-left: 5px solid orange;
+        }
+    </style>
+</head>
+<body>
 
-    <!-- Drug Inventory Section -->
-    <section id="inventory">
-      <h2>Drug Inventory</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Drug Name</th>
-            <th>Category</th>
-            <th>Price (KES)</th>
-            <th>Stock Quantity</th>
-          </tr>
-        </thead>
-        <tbody id="drug-list">
-          <tr>
-            <td>Paracetamol</td>
-            <td>Pain Relief</td>
-            <td>50</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>Amoxicillin</td>
-            <td>Antibiotic</td>
-            <td>200</td>
-            <td>10</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    <header>Mumash Pharmaceuticals</header>
 
-    <!-- Sold Drugs Section -->
-    <section id="sold">
-      <h2>Record Sold Drugs</h2>
-      <form id="sold-form">
-        <label for="sold-drug">Drug Name:</label>
-        <input type="text" id="sold-drug" required />
+    <div class="container">
+        <h2>Available Drugs</h2>
 
-        <label for="sold-quantity">Quantity Sold:</label>
-        <input type="number" id="sold-quantity" required />
+        <!-- Search Bar -->
+        <input type="text" id="searchBar" placeholder="Search for drug name or price..." onkeyup="searchDrugs()">
 
-        <button type="submit">Record Sale</button>
-      </form>
-    </section>
+        <!-- Drug List Table -->
+        <table id="drugTable">
+            <thead>
+                <tr>
+                    <th>Drug Name</th>
+                    <th>Price (KES)</th>
+                    <th>Stock Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Paracetamol</td>
+                    <td>50</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Amoxicillin</td>
+                    <td>150</td>
+                    <td class="low-stock">5</td>
+                </tr>
+                <tr>
+                    <td>Cough Syrup</td>
+                    <td>200</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Insulin</td>
+                    <td>800</td>
+                    <td class="low-stock">3</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <!-- Restock Section -->
-    <section id="restock">
-      <h2>Restock Drugs</h2>
-      <form id="restock-form">
-        <label for="restock-drug">Drug Name:</label>
-        <input type="text" id="restock-drug" required />
+        <!-- Sold Drugs Section -->
+        <div class="sold">
+            <h3>Sold Drugs (Today)</h3>
+            <p>No drugs sold yet.</p>
+        </div>
 
-        <label for="restock-quantity">Quantity Restocked:</label>
-        <input type="number" id="restock-quantity" required />
+        <!-- Restocked Drugs Section -->
+        <div class="restocked">
+            <h3>Restocked Drugs</h3>
+            <p>No new restocks.</p>
+        </div>
 
-        <button type="submit">Update Stock</button>
-      </form>
-    </section>
+        <!-- Low Stock Alerts -->
+        <div class="alerts">
+            <h3>Low Stock Alerts</h3>
+            <p><span class="low-stock">Amoxicillin - 5 left</span></p>
+            <p><span class="low-stock">Insulin - 3 left</span></p>
+        </div>
 
-    <!-- Low Stock Alerts -->
-    <section id="low-stock">
-      <h2>Low Stock Alerts</h2>
-      <p id="low-stock-msg">No alerts currently.</p>
-    </section>
+        <!-- Contact Section -->
+        <div class="contacts">
+            <h3>Contact Us</h3>
+            <p><b>Location:</b> Sabatia, along Luanda-Ekero Road</p>
+            <p><b>Phone:</b> 0718601536 (Nathan) | 0723941760 (Roselyne)</p>
+        </div>
+    </div>
 
-    <script src="script.js"></script>
-  </body>
+    <script>
+        function searchDrugs() {
+            let input = document.getElementById("searchBar").value.toLowerCase();
+            let table = document.getElementById("drugTable");
+            let rows = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let cells = rows[i].getElementsByTagName("td");
+                let drugName = cells[0].textContent.toLowerCase();
+                let price = cells[1].textContent.toLowerCase();
+
+                if (drugName.includes(input) || price.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
 </html>
