@@ -10,7 +10,7 @@ Mumash Pharmaceuticals is an online **medical drugs store** based in Kenya. This
 ---
 
 ## 🚀 Live Demo  
-🔗 [Visit Mumash Pharmaceuticals Online](https://yourusername.github.io/mumash-pharmaceuticals/)  
+🔗 [Visit Mumash Pharmaceuticals Online](https://nathanateka47.github.io/mumash-pharmaceuticals/)  
 
 ---
 
