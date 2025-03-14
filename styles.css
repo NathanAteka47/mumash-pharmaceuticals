@@ -9,58 +9,102 @@ body {
   height: 100vh;
 }
 
-.container {
-  background: white;
-  padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  width: 300px;
+/* Header & Navigation */
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 15px;
   text-align: center;
 }
 
-h1, h2 {
-  color: #333;
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
 }
 
+nav ul li {
+  display: inline-block;
+  margin: 5px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Section Layout */
+section {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  box-shadow: 0px 0px 10px gray;
+  border-radius: 5px;
+}
+
+/* Responsive Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+th {
+  background: #2c3e50;
+  color: white;
+}
+
+/* Responsive Forms */
 form {
   display: flex;
   flex-direction: column;
 }
 
-label {
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
-
-input {
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+input,
+button {
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
 }
 
 button {
-  background-color: #28a745;
+  background: #27ae60;
   color: white;
-  padding: 10px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
 }
 
 button:hover {
-  background-color: #218838;
+  background: #2ecc71;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-ul li {
-  background: #ddd;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 5px;
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  table,
+  th,
+  td {
+    font-size: 14px;
+  }
+
+  section {
+    width: 95%;
+  }
 }
