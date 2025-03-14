@@ -1,55 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mumash Pharmaceuticals</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<header>
-    <h1>Mumash Pharmaceuticals</h1>
+    <link rel="stylesheet" href="styles.css" />
     <nav>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <hr />
+        <hr />
+        <li><a href="sales.html">💰 Sales</a></li>
+        <hr />
+        <hr />
+        <li><a href="restock.html">📦 Restock</a></li>
+        <hr />
+        <hr />
+      </ul>
+    </nav>
+  </head>
+  <body>
+    <header>
+      <h1>Mumash Pharmaceuticals</h1>
+      <nav>
         <a href="index.html">Home</a>
         <a href="sales.html">Sales</a>
         <a href="restock.html">Restock</a>
-    </nav>
-</header>
+      </nav>
+    </header>
 
-<!-- Search Bar -->
-<input type="text" id="searchBar" placeholder="Search drug name or price..." onkeyup="searchDrugs()">
+    <!-- Search Bar -->
+    <input
+      type="text"
+      id="searchBar"
+      placeholder="Search drug name or price..."
+      onkeyup="searchDrugs()"
+    />
 
-<!-- Drug List Table -->
-<table id="drugTable">
-    <tr>
+    <!-- Drug List Table -->
+    <table id="drugTable">
+      <tr>
         <th>Drug Name</th>
         <th>Price (KSh)</th>
         <th>Stock</th>
-    </tr>
-    <tr>
-        <td>Paracetamol</td>
-        <td>50</td>
-        <td>20</td>
-    </tr>
-    <tr>
-        <td>Amoxicillin</td>
-        <td>100</td>
-        <td>5</td>
-    </tr>
-</table>
+      </tr>
+      <tr>
+        <td>Paracetamol/ Panadol Blister pack</td>
+        <td>20 per strip</td>
+        <td>17 Boxes</td>
+      </tr>
+      <tr>
+        <td>Amoxicillin 500mg capsules 100s</td>
+        <td>100 per 15 capsules</td>
+        <td>3 Boxes</td>
+      </tr>
+    </table>
 
-<!-- Low Stock Alerts -->
-<div class="alerts">
-    <h3>Low Stock Alerts</h3>
-    <div id="lowStockAlerts"></div>
-</div>
+    <!-- Low Stock Alerts -->
+    <div class="alerts">
+      <h3>Low Stock Alerts</h3>
+      <div id="lowStockAlerts"></div>
+    </div>
 
-<footer>
-    <p>Contact: 0718601536 - Nathan | 0723941760 - Roselyne</p>
-    <p>Location: Sabatia, along Luanda-Ekero Road</p>
-</footer>
+    <footer>
+      <p>Contact: 0718601536 - Nathan | 0723941760 - Roselyne</p>
+      <p>Location: Sabatia, along Luanda-Ekero Road</p>
+    </footer>
 
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
