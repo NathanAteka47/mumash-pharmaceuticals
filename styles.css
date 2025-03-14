@@ -1,107 +1,66 @@
-/* General Styles */
 body {
   font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Header & Navigation */
-header {
-  background: #2c3e50;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  text-align: center;
-}
-
-nav ul li {
-  display: inline-block;
-  margin: 5px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-}
-
-/* Section Layout */
-section {
-  width: 90%;
-  margin: 20px auto;
-  padding: 20px;
+.container {
   background: white;
-  box-shadow: 0px 0px 10px gray;
-  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
 }
 
-/* Responsive Table */
-table {
-  width: 100%;
-  border-collapse: collapse;
+h1, h2 {
+  color: #333;
 }
 
-table,
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 10px;
-}
-
-th {
-  background: #2c3e50;
-  color: white;
-}
-
-/* Responsive Forms */
 form {
   display: flex;
   flex-direction: column;
 }
 
-input,
-button {
-  padding: 10px;
-  margin: 5px 0;
-  width: 100%;
+label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 button {
-  background: #27ae60;
+  background-color: #28a745;
   color: white;
+  padding: 10px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 button:hover {
-  background: #2ecc71;
+  background-color: #218838;
 }
 
-/* Mobile Responsive Design */
-@media (max-width: 768px) {
-  nav ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+ul {
+  list-style: none;
+  padding: 0;
+}
 
-  nav ul li {
-    display: block;
-    margin: 10px 0;
-  }
-
-  table,
-  th,
-  td {
-    font-size: 14px;
-  }
-
-  section {
-    width: 95%;
-  }
+ul li {
+  background: #ddd;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
 }

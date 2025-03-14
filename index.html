@@ -1,88 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mumash Pharmaceuticals</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Navigation Bar -->
-    <header>
-      <h1>Mumash Pharmaceuticals</h1>
-      <nav>
-        <ul>
-          <li><a href="#inventory">Inventory</a></li>
-          <li><a href="#sold">Sold Drugs</a></li>
-          <li><a href="#restock">Restock</a></li>
-          <li><a href="#low-stock">Low Stock Alerts</a></li>
-        </ul>
-      </nav>
-    </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mumash Pharmaceuticals - Daily Sales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Sales Entry</h1>
+        <form id="sales-form">
+            <label for="drug-name">Drug Name:</label>
+            <input type="text" id="drug-name" required>
 
-    <!-- Drug Inventory Section -->
-    <section id="inventory">
-      <h2>Drug Inventory</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Drug Name</th>
-            <th>Category</th>
-            <th>Price (KES)</th>
-            <th>Stock Quantity</th>
-          </tr>
-        </thead>
-        <tbody id="drug-list">
-          <tr>
-            <td>Paracetamol</td>
-            <td>Pain Relief</td>
-            <td>50</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>Amoxicillin</td>
-            <td>Antibiotic</td>
-            <td>200</td>
-            <td>10</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+            <label for="quantity">Quantity Sold:</label>
+            <input type="number" id="quantity" min="1" required>
 
-    <!-- Sold Drugs Section -->
-    <section id="sold">
-      <h2>Record Sold Drugs</h2>
-      <form id="sold-form">
-        <label for="sold-drug">Drug Name:</label>
-        <input type="text" id="sold-drug" required />
+            <label for="price">Price per Unit (Ksh):</label>
+            <input type="number" id="price" min="1" required>
 
-        <label for="sold-quantity">Quantity Sold:</label>
-        <input type="number" id="sold-quantity" required />
+            <button type="submit">Add Sale</button>
+        </form>
 
-        <button type="submit">Record Sale</button>
-      </form>
-    </section>
+        <h2>Sales Record</h2>
+        <ul id="sales-list"></ul>
 
-    <!-- Restock Section -->
-    <section id="restock">
-      <h2>Restock Drugs</h2>
-      <form id="restock-form">
-        <label for="restock-drug">Drug Name:</label>
-        <input type="text" id="restock-drug" required />
-
-        <label for="restock-quantity">Quantity Restocked:</label>
-        <input type="number" id="restock-quantity" required />
-
-        <button type="submit">Update Stock</button>
-      </form>
-    </section>
-
-    <!-- Low Stock Alerts -->
-    <section id="low-stock">
-      <h2>Low Stock Alerts</h2>
-      <p id="low-stock-msg">No alerts currently.</p>
-    </section>
+        <button onclick="location.href='restock.html'">Go to Restock Page</button>
+    </div>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
