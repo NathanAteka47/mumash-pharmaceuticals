@@ -4,151 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mumash Pharmaceuticals</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-            text-align: center;
-        }
-        header {
-            background-color: #008080;
-            color: white;
-            padding: 15px;
-            font-size: 24px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0px 0px 10px gray;
-            border-radius: 10px;
-        }
-        input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #008080;
-            color: white;
-        }
-        .low-stock {
-            color: red;
-            font-weight: bold;
-        }
-        .sold, .restocked, .alerts, .contacts {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #ffebcc;
-            border-left: 5px solid orange;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header>Mumash Pharmaceuticals</header>
+<header>
+    <h1>Mumash Pharmaceuticals</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sales.html">Sales</a>
+        <a href="restock.html">Restock</a>
+    </nav>
+</header>
 
-    <div class="container">
-        <h2>Available Drugs</h2>
+<!-- Search Bar -->
+<input type="text" id="searchBar" placeholder="Search drug name or price..." onkeyup="searchDrugs()">
 
-        <!-- Search Bar -->
-        <input type="text" id="searchBar" placeholder="Search for drug name or price..." onkeyup="searchDrugs()">
+<!-- Drug List Table -->
+<table id="drugTable">
+    <tr>
+        <th>Drug Name</th>
+        <th>Price (KSh)</th>
+        <th>Stock</th>
+    </tr>
+    <tr>
+        <td>Paracetamol</td>
+        <td>50</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td>Amoxicillin</td>
+        <td>100</td>
+        <td>5</td>
+    </tr>
+</table>
 
-        <!-- Drug List Table -->
-        <table id="drugTable">
-            <thead>
-                <tr>
-                    <th>Drug Name</th>
-                    <th>Price (KES)</th>
-                    <th>Stock Level</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Paracetamol</td>
-                    <td>50</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <td>Amoxicillin</td>
-                    <td>150</td>
-                    <td class="low-stock">5</td>
-                </tr>
-                <tr>
-                    <td>Cough Syrup</td>
-                    <td>200</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>Insulin</td>
-                    <td>800</td>
-                    <td class="low-stock">3</td>
-                </tr>
-            </tbody>
-        </table>
+<!-- Low Stock Alerts -->
+<div class="alerts">
+    <h3>Low Stock Alerts</h3>
+    <div id="lowStockAlerts"></div>
+</div>
 
-        <!-- Sold Drugs Section -->
-        <div class="sold">
-            <h3>Sold Drugs (Today)</h3>
-            <p>No drugs sold yet.</p>
-        </div>
+<footer>
+    <p>Contact: 0718601536 - Nathan | 0723941760 - Roselyne</p>
+    <p>Location: Sabatia, along Luanda-Ekero Road</p>
+</footer>
 
-        <!-- Restocked Drugs Section -->
-        <div class="restocked">
-            <h3>Restocked Drugs</h3>
-            <p>No new restocks.</p>
-        </div>
-
-        <!-- Low Stock Alerts -->
-        <div class="alerts">
-            <h3>Low Stock Alerts</h3>
-            <p><span class="low-stock">Amoxicillin - 5 left</span></p>
-            <p><span class="low-stock">Insulin - 3 left</span></p>
-        </div>
-
-        <!-- Contact Section -->
-        <div class="contacts">
-            <h3>Contact Us</h3>
-            <p><b>Location:</b> Sabatia, along Luanda-Ekero Road</p>
-            <p><b>Phone:</b> 0718601536 (Nathan) | 0723941760 (Roselyne)</p>
-        </div>
-    </div>
-
-    <script>
-        function searchDrugs() {
-            let input = document.getElementById("searchBar").value.toLowerCase();
-            let table = document.getElementById("drugTable");
-            let rows = table.getElementsByTagName("tr");
-
-            for (let i = 1; i < rows.length; i++) {
-                let cells = rows[i].getElementsByTagName("td");
-                let drugName = cells[0].textContent.toLowerCase();
-                let price = cells[1].textContent.toLowerCase();
-
-                if (drugName.includes(input) || price.includes(input)) {
-                    rows[i].style.display = "";
-                } else {
-                    rows[i].style.display = "none";
-                }
-            }
-        }
-    </script>
-
+<script src="script.js"></script>
 </body>
 </html>

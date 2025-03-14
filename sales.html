@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restock - Mumash Pharmaceuticals</title>
+    <title>Sales - Mumash Pharmaceuticals</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header>
-    <h1>Restock - Mumash Pharmaceuticals</h1>
+    <h1>Sales - Mumash Pharmaceuticals</h1>
     <nav>
         <a href="index.html">Home</a>
         <a href="sales.html">Sales</a>
@@ -17,21 +17,21 @@
     </nav>
 </header>
 
-<h2>Log Restocked Drugs</h2>
+<h2>Record Sold Drugs</h2>
 
-<form id="restockForm">
-    <label for="restockDrug">Drug Name:</label>
-    <input type="text" id="restockDrug" required>
+<form id="salesForm">
+    <label for="soldDrug">Drug Name:</label>
+    <input type="text" id="soldDrug" required>
     
-    <label for="restockQty">Quantity Restocked:</label>
-    <input type="number" id="restockQty" required>
+    <label for="soldQty">Quantity Sold:</label>
+    <input type="number" id="soldQty" required>
     
-    <button type="button" onclick="recordRestock()">Submit</button>
+    <button type="button" onclick="recordSale()">Submit</button>
 </form>
 
-<div class="restocked">
-    <h3>Recent Restocks</h3>
-    <ul id="restockList"></ul>
+<div class="sold">
+    <h3>Recent Sales</h3>
+    <ul id="salesList"></ul>
 </div>
 
 <footer>
