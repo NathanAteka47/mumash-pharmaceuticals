@@ -28,7 +28,65 @@
     
     <button type="button" onclick="recordRestock()">Submit</button>
 </form>
+<script>
+    function loadDrugsForRestock() {
+        let drugs = JSON.parse(localStorage.getItem("drugs"));
+        let select = document.getElementById("drugSelect");
 
+        select.innerHTML = "";
+        drugs.forEach((drug, index) => {
+            let option = document.createElement("option");
+            option.value = index;
+            option.textContent = drug.name;
+            select.appendChild(option);
+        });
+    }
+
+    function restock() {
+        let drugs = JSON.parse(localStorage.getItem("drugs"));
+        let index = document.getElementById("drugSelect").value;
+        let amount = parseInt(document.getElementById("restockAmount").value);
+
+        if (!isNaN(amount) && amount > 0) {
+            drugs[index].stock += amount;
+            localStorage.setItem("drugs", JSON.stringify(drugs));<script>
+    function loadDrugsForRestock() {
+        let drugs = JSON.parse(localStorage.getItem("drugs"));
+        let select = document.getElementById("drugSelect");
+
+        select.innerHTML = "";
+        drugs.forEach((drug, index) => {
+            let option = document.createElement("option");
+            option.value = index;
+            option.textContent = drug.name;
+            select.appendChild(option);
+        });
+    }
+
+    function restock() {
+        let drugs = JSON.parse(localStorage.getItem("drugs"));
+        let index = document.getElementById("drugSelect").value;
+        let amount = parseInt(document.getElementById("restockAmount").value);
+
+        if (!isNaN(amount) && amount > 0) {
+            drugs[index].stock += amount;
+            localStorage.setItem("drugs", JSON.stringify(drugs));
+            alert("Restocked Successfully!");
+        }
+
+        document.getElementById("restockAmount").value = "";
+    }
+
+    window.onload = loadDrugsForRestock;
+</script>
+            alert("Restocked Successfully!");
+        }
+
+        document.getElementById("restockAmount").value = "";
+    }
+
+    window.onload = loadDrugsForRestock;
+</script>
 <div class="restocked">
     <h3>Recent Restocks</h3>
     <ul id="restockList"></ul>

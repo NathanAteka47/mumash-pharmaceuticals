@@ -1,44 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sales - Mumash Pharmaceuticals</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-<header>
-    <h1>Sales - Mumash Pharmaceuticals</h1>
-    <nav>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sales - Mumash Pharmaceuticals</h1>
+      <nav>
         <a href="index.html">Home</a>
         <a href="sales.html">Sales</a>
         <a href="restock.html">Restock</a>
-    </nav>
-</header>
+      </nav>
+    </header>
 
-<h2>Record Sold Drugs</h2>
+    <h2>Record Sold Drugs</h2>
 
-<form id="salesForm">
-    <label for="soldDrug">Drug Name:</label>
-    <input type="text" id="soldDrug" required>
-    
-    <label for="soldQty">Quantity Sold:</label>
-    <input type="number" id="soldQty" required>
-    
-    <button type="button" onclick="recordSale()">Submit</button>
-</form>
+    <form id="salesForm">
+      <label for="soldDrug">Drug Name:</label>
+      <input type="text" id="soldDrug" required />
 
-<div class="sold">
-    <h3>Recent Sales</h3>
-    <ul id="salesList"></ul>
-</div>
+      <label for="soldQty">Quantity Sold:</label>
+      <input type="number" id="soldQty" required />
 
-<footer>
-    <p>Contact: 0718601536 - Nathan | 0723941760 - Roselyne</p>
-    <p>Location: Sabatia, along Luanda-Ekero Road</p>
-</footer>
+      <button type="button" onclick="recordSale()">Submit</button>
+    </form>
+    <script>
+      function loadDrugsForSale() {
+        let drugs = JSON.parse(localStorage.getItem("drugs"));
+        let select = document.getElementById("sellDrugSelect");
 
-<script src="script.js"></script>
-</body>
+        select.innerHTML = "";
+        drugs.forEach((drug, index) => {
+          let option = document.createElement("option");
+          option.value = index;
+          option.textContent = drug.name;
+          select.appendChild(option);
+        });
+      }
+
+      function sellDrug() {
+        let drugs = JSON.parse(localStorage.getItem("drugs"));
+        let index = document.getElementById("sellDrugSelect").value;
+        let amount = parseInt(document.getElementById("sellAmount").value);
+
+        if (!isNaN(amount) && amount > 0 && drugs[index].stock >= amount) {
+          drugs[index].stock -= amount;
+          localStorage.setItem("drugs", JSON.stringify(drugs));
+          alert("Sale Recorded Successfully!");
+        } else {
+          alert("Not enough stock!");
+        }
+
+        document.getElementById("sellAmount").value = "";
+      }
+
+      window.onload = loadDrugsForSale;
+    </script>
+
+    <div class="sold">
+      <h3>Recent Sales</h3>
+      <ul id="salesList"></ul>
+    </div>
+
+    <footer>
+      <p>Contact: 0718601536 - Nathan | 0723941760 - Roselyne</p>
+      <p>Location: Sabatia, along Luanda-Ekero Road</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -54,3 +54,15 @@ function recordRestock() {
 }
 
 window.onload = checkLowStock;
+
+let drugs = [
+  { name: "Paracetamol / Panadol Blister pack", price: 20, stock: 5 },
+  { name: "Amoxicillin 500mg capsules 100s", price: 100, stock: 5 },
+  { name: "Amoxicillin 250mg capsules 100s", price: 100, stock: 5 },
+  { name: "AL Ionart Tablets 24s", price: 100, stock: 5 }
+];
+
+// Save to Local Storage
+if (!localStorage.getItem("drugs")) {
+  localStorage.setItem("drugs", JSON.stringify(drugs));
+}

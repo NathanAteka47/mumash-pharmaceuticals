@@ -397,7 +397,33 @@
         <td>5 Boxes</td>
       </tr>
     </table>
+    <script>
+      function loadDrugs() {
+        let drugs = JSON.parse(localStorage.getItem("drugs"));
+        let table = document.getElementById("drugTable");
 
+        // Clear existing rows
+        table.innerHTML = `
+              <tr>
+                  <th>Drug Name</th>
+                  <th>Price (Ksh)</th>
+                  <th>Stock</th>
+              </tr>`;
+
+        // Add updated data
+        drugs.forEach((drug, index) => {
+          let row = table.insertRow();
+          row.innerHTML = `<td>${drug.name}</td><td>${drug.price}</td><td>${drug.stock} Boxes</td>`;
+        });
+      }
+
+      // Load drugs when page loads
+      window.onload = loadDrugs;
+    </script>
+    <script>
+      setInterval(loadDrugs, 5000); // Refresh every 5 seconds
+  </script>
+  
     <!-- Low Stock Alerts -->
     <div class="alerts">
       <h3>Low Stock Alerts</h3>
